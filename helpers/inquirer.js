@@ -12,33 +12,18 @@ const question = [
     message: "what do you want to do?\n",
     choices: [
       {
-        value: "1",
+        value: 3,
         name: `${'1.'.green} Create todo`,
       },
       {
-        value: "2",
+        value: 2,
         name: `${'2.'.green} List Todos`,
       },
       {
-        value: "3",
+        value: 3,
         name: `${'3.'.green} List todos completed`,
       },
-      {
-        value: "4",
-        name: `${'4.'.green} List todos pending`,
-      },
-      {
-        value: "5",
-        name: `${'5.'.green} Complete todos(s)`,
-      },
-      {
-        value: "6",
-        name: `${'6.'.green} Delete todo`,
-      },
-      {
-        value: "0",
-        name: `${'7.'.green} Exit`,
-      },
+      
     ],
   },
 ];

@@ -1,8 +1,15 @@
-import { readInput } from "./helpers/inquirer.js";
+import { menu, readInput } from "./helpers/inquirer.js";
 
 const main = async () => {
-  const text = await readInput("Hola: ");
-  console.log(text)
+    console.clear()
+
+    do {
+      let  op = await menu();
+
+    } while (op !== 0);
+
+
+
 };
 
 main();
