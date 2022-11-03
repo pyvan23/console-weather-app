@@ -12,16 +12,16 @@ const question = [
     message: "what do you want to do?\n",
     choices: [
       {
-        value: 3,
-        name: `${'1.'.green} Create todo`,
+        value: 1,
+        name: `${'1.'.green} Searching city`,
       },
       {
         value: 2,
-        name: `${'2.'.green} List Todos`,
+        name: `${'2.'.green} History`,
       },
       {
-        value: 3,
-        name: `${'3.'.green} List todos completed`,
+        value: 0,
+        name: `${'0.'.green} Exit`,
       },
       
     ],
