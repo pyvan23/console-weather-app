@@ -18,8 +18,8 @@ const main = async () => {
 
       case 1:
 
-        const city = await readInput('City: ')
-        console.log(city)
+        const places = await readInput('City: ')
+        await searchCity.city(places)
         
 
         console.log('\nCity Info\n'.green)
