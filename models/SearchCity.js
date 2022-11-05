@@ -1,19 +1,35 @@
 import axios from "axios";
 
 export class SearchCity {
-  history = ["madrid,paris"];
+    history = ["madrid,paris"];
 
-  constructor() {
-    //read DB
-  }
-
-  async city(place = "") {
-    try {
-      // console.log(`city: ${place}`);
-      const resp = await axios.get("");
-      console.log(resp.data);
-    } catch (error) {
-      return [];
+    constructor() {
+        //read DB
     }
-  }
+
+    get params() {
+        return {
+            access_token:
+                "",
+            limit: 5,
+            language: "es",
+        };
+    }
+
+    async city(place = "") {
+        try {
+            // console.log(`city: ${place}`);
+
+            const instance = axios.create({
+                baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json`,
+                params: this.params,
+            });
+
+            const resp = await instance.get();
+            console.log(resp.data);
+            return [];
+        } catch (error) {
+            return [];
+        }
+    }
 }

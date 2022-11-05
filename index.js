@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv' 
+dotenv.config()
+
 import { menu, pause, readInput } from "./helpers/inquirer.js";
 import  { SearchCity }  from "./models/SearchCity.js";
 import Color from 'colors'
