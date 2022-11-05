@@ -10,7 +10,7 @@ export class SearchCity {
     get params() {
         return {
             access_token:
-                "",
+                process.env.MAPBOX_Key,
             limit: 5,
             language: "es",
         };
