@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv' 
 dotenv.config()
 
-import { menu, pause, readInput } from "./helpers/inquirer.js";
+import { listPlaces, menu, pause, readInput } from "./helpers/inquirer.js";
 import  { SearchCity }  from "./models/SearchCity.js";
 import Color from 'colors'
 
@@ -21,12 +21,14 @@ const main = async () => {
 
       case 1:
 
-        const places = await readInput('City: ')
-        await searchCity.city(places)
-        
+        const place = await readInput('City: ')
+        const places = await searchCity.city(place)
+        const id = await listPlaces(places)
 
+        
+      console.log(id);
         console.log('\nCity Info\n'.green)
-        console.log('City: ')
+        console.log(`Places: `)
         console.log('lon: ')
         console.log('lat: ')
         console.log('Min: ')

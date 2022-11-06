@@ -26,9 +26,15 @@ export class SearchCity {
             });
 
             const resp = await instance.get();
-            console.log(resp.data);
-            return [];
+
+            return resp.data.features.map(result => ({
+                id: result.id,
+                name: result.place_name_es,
+                lng: result.center[0],
+                lat: result.center[1],
+            }))
         } catch (error) {
+            throw new error(` ${place} does not exist }`)
             return [];
         }
     }

@@ -83,14 +83,14 @@ export const readInput = async (message) => {
   return description;
 };
 
-export const listDeleteTodos = async (todos = []) => {
+export const listPlaces = async (places = []) => {
 
-  const choices = todos.map((todo, i) => {
+  const choices = places.map((place, i) => {
     const index = i + 1
     return {
 
-      value: todo.id,
-      name: `${index} ${todo.description}`
+      value: place.id,
+      name: `${index} ${place.name}`
     }
 
   })
@@ -101,7 +101,7 @@ export const listDeleteTodos = async (todos = []) => {
     {
       type: 'list',
       name: 'id',
-      message: 'choose todo to delete\n',
+      message: 'choose a place\n',
       choices
     }
   ]
