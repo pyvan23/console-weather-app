@@ -14,9 +14,10 @@ const main = async () => {
 
   do {
     op = await menu();
-    console.log(op);
+    
     switch (op) {
       case 1:
+        
         const place = await readInput("City: ");
         const places = await searchCity.city(place);
         const id = await listPlaces(places);
@@ -43,7 +44,7 @@ const main = async () => {
 
       case 2:
         const history = searchCity.history.forEach((place, i) => {
-          const idx = `${i + 1}}`.green
+          const idx = `${i + 1}`.green
           console.log(`${idx} ${place}`);
 
         })

@@ -4,10 +4,10 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 
 export class SearchCity {
     history = [];
-    dbPath= './DB/dataBase.json'
+    dbPath = './DB/dataBase.json'
 
     constructor() {
-        //read DB
+        this.readDB()
     }
 
     get paramsMapBox() {
@@ -82,15 +82,31 @@ export class SearchCity {
 
     historyPlaces(place = '') {
 
-        if(this.history.includes(place.toLocaleLowerCase()))return
+        if (this.history.includes(place.toLocaleLowerCase())) return
 
         this.history.unshift(place.toLocaleLowerCase())
+        this.saveDB()
     }
 
-    saveDB(){
+    saveDB() {
+        const payload = {
+            histories: this.history
+        }
 
+        writeFileSync(this.dbPath, JSON.stringify(payload))
+        
     }
-    readDB(){
+    readDB() {
+
+        if (!existsSync(this.dbPath)) {
+            return null
+        }
+        const info = readFileSync(this.dbPath, { encoding: 'utf-8' })
+        //parse string
+        const data = JSON.parse(info)
+        // console.log(data)
+    
+        return data
 
     }
 
