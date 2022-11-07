@@ -1,7 +1,10 @@
 import axios from "axios";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+
 
 export class SearchCity {
-    history = ["madrid,paris"];
+    history = [];
+    dbPath= './DB/dataBase.json'
 
     constructor() {
         //read DB
@@ -58,13 +61,15 @@ export class SearchCity {
 
             const resp = await instance.get();
 
-            const { main,weather } = resp.data
-            
+            const { main, weather } = resp.data
 
-            return { description: weather[0].description,
-                    min: main.temp_min,
-                    max: main.temp_max,
-                    temp: main.temp                              }
+
+            return {
+                description: weather[0].description,
+                min: main.temp_min,
+                max: main.temp_max,
+                temp: main.temp
+            }
 
 
 
@@ -73,6 +78,20 @@ export class SearchCity {
 
             console.log(error);
         }
+    }
+
+    historyPlaces(place = '') {
+
+        if(this.history.includes(place.toLocaleLowerCase()))return
+
+        this.history.unshift(place.toLocaleLowerCase())
+    }
+
+    saveDB(){
+
+    }
+    readDB(){
+
     }
 
 }
